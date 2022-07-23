@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 interface ProductsAttrs {
   title: string;
-  desc: string;
+  description: string;
   img: string;
   categories: string[];
   size: string | void;
@@ -16,7 +16,7 @@ interface ProductModel extends mongoose.Model<ProductDoc> {
 
 interface ProductDoc extends mongoose.Document {
   title: string;
-  desc: string;
+  description: string;
   img: string;
   categories: string;
   size: string | void;
