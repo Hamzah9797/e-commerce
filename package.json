@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@mui/x-data-grid": "^5.15.0",
+    "@types/recharts": "^1.8.23"
+  }
+}
