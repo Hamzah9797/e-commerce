@@ -10,6 +10,7 @@ import SideBar from "./components/sidebar/SideBar";
 //pages
 import Home from "./pages/home/Home";
 import UserList from "./pages/userList/UserList";
+import User from "./pages/user/User";
 
 export default function App() {
   return (
@@ -23,6 +24,9 @@ export default function App() {
           </Route>
           <Route exact path="/users">
             <UserList />
+          </Route>
+          <Route exact path="/user/:userId">
+            <User />
           </Route>
         </Switch>
       </div>
