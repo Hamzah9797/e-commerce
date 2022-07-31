@@ -11,6 +11,10 @@ import SideBar from "./components/sidebar/SideBar";
 import Home from "./pages/home/Home";
 import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
+import NewUser from "./pages/newUser/NewUser";
+import ProductList from "./pages/productList/ProductList";
+import Product from "./pages/product/Product";
+import NewProduct from "./pages/newProduct/NewProduct";
 
 export default function App() {
   return (
@@ -27,6 +31,18 @@ export default function App() {
           </Route>
           <Route exact path="/user/:userId">
             <User />
+          </Route>
+          <Route exact path="/newUser">
+            <NewUser />
+          </Route>
+          <Route exact path="/products">
+            <ProductList />
+          </Route>
+          <Route exact path="/product/:productId">
+            <Product />
+          </Route>
+          <Route exact path="/newProduct">
+            <NewProduct />
           </Route>
         </Switch>
       </div>
