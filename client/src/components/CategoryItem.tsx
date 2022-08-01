@@ -2,6 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 
 // styled component
 const Container = styled.div`
@@ -50,17 +51,20 @@ interface ChildProps {
     id: number;
     img: string;
     title: string;
+    cat: string;
   };
 }
 
 const CategoryItem: React.FC<ChildProps> = ({ item }) => {
   return (
     <Container>
-      <Image src={item.img} />
-      <Info>
-        <Title>{item.title}</Title>
-        <Button>Shop Now</Button>
-      </Info>
+      <Link to={`/products/${item.cat}`}>
+        <Image src={item.img} />
+        <Info>
+          <Title>{item.title}</Title>
+          <Button>Shop Now</Button>
+        </Info>
+      </Link>
     </Container>
   );
 };

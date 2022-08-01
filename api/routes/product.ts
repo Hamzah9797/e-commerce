@@ -9,7 +9,8 @@ const router = express.Router();
 
 // create
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
-  const { title, description, img, categories, size, color, price } = req.body;
+  const { title, description, img, categories, size, color, price, inStock } =
+    req.body;
   const newProduct = Product.build({
     title,
     description,
@@ -18,6 +19,7 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
     size,
     color,
     price,
+    inStock,
   });
   try {
     const savedProduct = await newProduct.save();
