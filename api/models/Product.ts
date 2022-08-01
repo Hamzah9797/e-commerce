@@ -5,9 +5,10 @@ interface ProductsAttrs {
   description: string;
   img: string;
   categories: string[];
-  size: string | void;
-  color: string | void;
+  size: [];
+  color: [];
   price: number;
+  inStock: boolean;
 }
 
 interface ProductModel extends mongoose.Model<ProductDoc> {
@@ -19,9 +20,10 @@ interface ProductDoc extends mongoose.Document {
   description: string;
   img: string;
   categories: string;
-  size: string | void;
-  color: string | void;
+  size: [];
+  color: [];
   price: number;
+  inStock: boolean;
 }
 
 const productsSchema = new mongoose.Schema(
@@ -44,14 +46,18 @@ const productsSchema = new mongoose.Schema(
       required: true,
     },
     size: {
-      type: String,
+      type: Array,
     },
     color: {
-      type: String,
+      type: Array,
     },
     price: {
       type: Number,
       required: true,
+    },
+    inStock: {
+      type: Boolean,
+      default: true,
     },
   },
   { timestamps: true }
