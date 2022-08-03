@@ -6,7 +6,10 @@ import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTypedActions } from "../hooks/useTypedActions";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { addToCart } from "../redux/action-creators/cartActions";
 
 const Container = styled.div``;
 

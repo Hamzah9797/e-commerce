@@ -6,6 +6,7 @@ import { mobile } from "../responsive";
 //icon
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import { useSelector } from "react-redux";
 
 //styled components
 const Container = styled.div`
