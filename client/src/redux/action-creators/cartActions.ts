@@ -5,7 +5,8 @@ import axios from "axios";
 import { userRequest } from "./../../requestMethod";
 
 export const addToCart =
-  (id: string, qty) => async (dispatch: Dispatch<CartActions>, getState) => {
+  (id: string, qty, size: string, color: string) =>
+  async (dispatch: Dispatch<CartActions>, getState) => {
     try {
       const { data } = await axios.get(
         "http://localhost:5000/api/products/find/" + id
@@ -18,10 +19,11 @@ export const addToCart =
           description: data.description,
           img: data.img,
           categories: data.categories,
-          color: data.color,
-          size: data.size,
+          color: color,
+          size: size,
           price: data.price,
           inStock: data.inStock,
+          qty: qty,
         },
       });
     } catch (err) {

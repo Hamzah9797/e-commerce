@@ -172,12 +172,12 @@ const ProductPage = () => {
 
   const handleClick = () => {
     //update cart
-    addToCart(product._id, quantity);
+    // addToCart(product._id, quantity);
   };
 
   const cartProducts = useTypedSelector((state) => state.cart);
 
-  console.log(cartProducts);
+  console.log(color, size);
 
   const addToCart = useTypedActions();
 
@@ -217,7 +217,9 @@ const ProductPage = () => {
               <Amount>{quantity}</Amount>
               <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button onClick={() => addToCart(product._id, quantity)}>
+            <Button
+              onClick={() => addToCart(product._id, quantity, color, size)}
+            >
               ADD TO CART
             </Button>
           </AddContainer>

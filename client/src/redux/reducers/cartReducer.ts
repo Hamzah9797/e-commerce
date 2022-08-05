@@ -20,12 +20,14 @@ export const cartReducer = (
   switch (action.type) {
     case ActionType.ADD_TO_CART:
       const item = action.payload;
-      const existItem = state.products.find((x) => x._id === item._id);
+      console.log(item, "item");
+      const existItem = state.products.find((x) => x.id === item.id);
+      console.log(existItem, "exist");
       if (existItem) {
         return {
           ...state,
           products: state.products.map((x) =>
-            x._id === existItem._id ? item : x
+            x.id === existItem.id ? item : x
           ),
           quantity: state.quantity + 1,
           total: state.total + action.payload.price,
