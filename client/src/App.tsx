@@ -6,6 +6,7 @@ import {
   BrowserRouter as Router,
   Redirect,
 } from "react-router-dom";
+import { useTypedSelector } from "./hooks/useTypedSelector";
 
 //pages
 import Home from "./pages/Home";
@@ -16,7 +17,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 export default function App() {
-  const user = true;
+  const user = useTypedSelector((state) => state.user.currentUser);
 
   return (
     <Router>

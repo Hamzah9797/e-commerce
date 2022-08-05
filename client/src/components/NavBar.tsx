@@ -6,7 +6,8 @@ import { mobile } from "../responsive";
 //icon
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
-import { useSelector } from "react-redux";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { Link } from "react-router-dom";
 
 //styled components
 const Container = styled.div`
@@ -73,6 +74,10 @@ const MenuItem = styled.div`
 `;
 
 const NavBar = () => {
+  const getCart = useTypedSelector((state) => state.cart);
+
+  const { products, quantity, total } = getCart;
+
   return (
     <Container>
       <Wrapper>
@@ -89,11 +94,17 @@ const NavBar = () => {
         <Right>
           <MenuItem>Register</MenuItem>
           <MenuItem>Sign In</MenuItem>
-          <MenuItem>
-            <Badge badgeContent={4} color="primary" overlap="rectangular">
-              <ShoppingCartOutlined />
-            </Badge>
-          </MenuItem>
+          <Link to="/cart">
+            <MenuItem>
+              <Badge
+                badgeContent={quantity}
+                color="primary"
+                overlap="rectangular"
+              >
+                <ShoppingCartOutlined />
+              </Badge>
+            </MenuItem>
+          </Link>
         </Right>
       </Wrapper>
     </Container>
