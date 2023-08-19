@@ -1,7 +1,15 @@
 {
-  "dependencies": {
-    "@mui/x-data-grid": "^5.15.0",
-    "@types/react-router-dom": "^5.3.3",
-    "@types/recharts": "^1.8.23"
-  }
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "clean": "pnpm recursive exec -- rm -rf node_modules",
+    "start": "pnpm --parallel run start",
+    "build": "pnpm --parallel run build",
+    "install-packages": "pnpm recursive exec npm install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
