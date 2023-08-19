@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import Newsletter from "../components/Newsletter";
+import Newsletter from "../components/NewsLetter";
 
 test("renders newsletter form and handles input", () => {
   const { getByPlaceholderText } = render(<Newsletter />);
