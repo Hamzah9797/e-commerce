@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   root: true,
   env: {
@@ -16,7 +17,6 @@ module.exports = {
   rules: {
     // Basic Rules
     indent: ["error", 2],
-    quotes: ["error", "single"],
     semi: ["error", "always"],
     "no-console": "warn",
 
