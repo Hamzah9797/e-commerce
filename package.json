@@ -8,6 +8,7 @@
     "start": "pnpm --parallel run start",
     "lint": "pnpm --parallel run lint",
     "build": "pnpm --parallel run build",
+    "test": "pnpm --parallel run test",
     "install-packages": "pnpm recursive exec npm install"
   },
   "keywords": [],
