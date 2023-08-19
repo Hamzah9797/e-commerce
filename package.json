@@ -6,6 +6,7 @@
     "preinstall": "npx only-allow pnpm",
     "clean": "pnpm recursive exec -- rm -rf node_modules",
     "start": "pnpm --parallel run start",
+    "lint": "pnpm --parallel run lint",
     "build": "pnpm --parallel run build",
     "install-packages": "pnpm recursive exec npm install"
   },
