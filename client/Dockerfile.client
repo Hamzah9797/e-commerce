@@ -5,7 +5,7 @@ FROM node:16
 WORKDIR /app
 
 # Copy package.json and pnpm-lock.yaml to the working directory
-COPY package*.json pnpm-lock.yaml 
+COPY package*.json ./
 
 # Install pnpm globally
 RUN npm install -g pnpm
@@ -15,9 +15,6 @@ COPY . .
 
 # Install application dependencies
 RUN pnpm install
-
-# Copy the rest of the application code
-COPY . .
 
 # Build the React app
 RUN pnpm run build
