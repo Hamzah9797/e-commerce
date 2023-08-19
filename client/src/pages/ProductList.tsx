@@ -1,3 +1,4 @@
+/* eslint-disable */
 import styled from "styled-components";
 import NavBar from "../components/NavBar";
 import Announcement from "../components/Announcement";

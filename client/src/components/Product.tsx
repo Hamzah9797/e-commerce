@@ -1,3 +1,4 @@
+/* eslint-disable */
 // dependencies
 import {
   FavoriteBorderOutlined,

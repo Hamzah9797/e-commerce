@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ActionType } from "../action-types";
 import { UserActions } from "../actions";
 

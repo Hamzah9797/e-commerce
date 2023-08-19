@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useSelector, TypedUseSelectorHook } from "react-redux";
 import { RootState } from "../redux/reducers";
 

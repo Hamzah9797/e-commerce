@@ -1,0 +1,26 @@
+# Use an official Node.js runtime as the base image
+FROM node:16
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package.json and pnpm-lock.yaml to the working directory
+COPY package.json pnpm-lock.yaml 
+
+# Install pnpm globally
+RUN npm install -g pnpm
+
+# Copy the rest of the application code
+COPY . .
+
+# Install application dependencies
+RUN pnpm install
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose the port your Node.js API listens on (usually 5000)
+EXPOSE 5000
+
+# Start the Node.js API
+CMD ["pnpm", "start"]

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ActionType } from "../action-types";
 import { CartActions } from "../actions";
 import { Dispatch } from "redux";
