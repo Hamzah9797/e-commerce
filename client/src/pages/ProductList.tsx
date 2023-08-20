@@ -46,8 +46,6 @@ const ProductList: React.FC = () => {
   const location = useLocation();
   const cat = location.pathname.split("/")[2];
 
-  console.log(location, cat);
-
   const [filters, setFilters] = useState<object>({});
   const [sort, setSort] = useState<string>("newest");
 

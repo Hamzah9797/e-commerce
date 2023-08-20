@@ -90,10 +90,14 @@ const NavBar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>E-commerce</Logo>
+          <Link to="/">
+            <Logo>E-commerce</Logo>
+          </Link>
         </Center>
         <Right>
-          <MenuItem>Register</MenuItem>
+          <Link to="/login">
+            <MenuItem>Register</MenuItem>
+          </Link>
           <MenuItem>Sign In</MenuItem>
           <Link to="/cart">
             <MenuItem>
