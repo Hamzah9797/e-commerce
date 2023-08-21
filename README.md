@@ -22,7 +22,7 @@ This mockup shows a small e-commerce shop running on node 16.
 
 - clone the repository
 - npm install pnpm@latest -g (on your machine)
-- pnpm install (in the root folder)
+- pnpm run install-packages (in the root folder)
 - pnpm run start (in the root folder)
 - pnpm run test/lint (in the root folder - to run tests and linting)
 
