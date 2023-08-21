@@ -1,6 +1,3 @@
-// dependencies
-import React from "react";
-
 //components
 import NavBar from "../components/NavBar";
 import Announcement from "../components/Announcement";

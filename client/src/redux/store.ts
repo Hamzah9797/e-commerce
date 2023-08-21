@@ -32,4 +32,4 @@ export const store = configureStore({
   devTools: true,
 });
 
-export let persistor = persistStore(store);
+export const persistor = persistStore(store);

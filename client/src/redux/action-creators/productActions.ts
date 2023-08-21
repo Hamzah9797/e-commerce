@@ -1,11 +1,10 @@
 import { ActionType } from "../action-types";
 import { ProductsActions } from "../actions";
 import { Dispatch } from "redux";
-import axios from "axios";
 import { publicRequest } from "./../../requestMethod";
 
 export const getAllProducts = () => {
-  return async (dispatch: Dispatch<ProductsActions>, getState) => {
+  return async (dispatch: Dispatch<ProductsActions>) => {
     dispatch({
       type: ActionType.GET_ALL_PRODUCTS_REQUEST,
     });
