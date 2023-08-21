@@ -20,5 +20,23 @@ interface LoginFail {
   payload: string;
 }
 
+interface GetAllProductsRequest {
+  type: ActionType.GET_ALL_PRODUCTS_REQUEST;
+}
+
+interface GetAllProductsSuccess {
+  type: ActionType.GET_ALL_PRODUCTS_SUCCESS;
+  payload: any;
+}
+
+interface GetAllProductsFail {
+  type: ActionType.GET_ALL_PRODUCTS_FAIL;
+  payload: string;
+}
+
 export type CartActions = AddToCart;
 export type UserActions = LoginRequest | LoginFail | LoginSuccess;
+export type ProductsActions =
+  | GetAllProductsRequest
+  | GetAllProductsSuccess
+  | GetAllProductsFail;

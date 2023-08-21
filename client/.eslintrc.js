@@ -17,7 +17,7 @@ module.exports = {
   rules: {
     // Basic Rules
     indent: ["error", 2],
-    semi: ["error", "always"],
+    // semi: ["error", "always"],
     "no-console": "warn",
 
     // React Rules

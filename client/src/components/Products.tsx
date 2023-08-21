@@ -7,6 +7,8 @@ import axios from "axios";
 
 //data
 import { popularProducts } from "../data";
+import { useDispatch } from "react-redux";
+import { getAllProducts } from "../redux/action-creators/productActions";
 
 //styled components
 
@@ -28,10 +30,12 @@ const Products: React.FC<ChildProps> = ({ cat, filters, sort }) => {
 
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getProducts = async () => {
       try {
+        dispatch(getAllProducts());
         const res = await axios.get(
           cat
             ? `http://localhost:5000/api/products?category=${cat}`

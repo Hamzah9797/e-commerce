@@ -2,8 +2,10 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { useTypedActionsUser } from "../hooks/useTypedActions";
+import { useTypedActions } from "../hooks/useTypedActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/action-creators/userActions";
 
 const Container = styled.div`
   width: 100vw;
@@ -72,14 +74,13 @@ const Error = styled.span`
 const Login = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const { isFetching, error } = useTypedSelector((state) => state.user);
 
-  const login = useTypedActionsUser();
-
   const handleLogin = (e) => {
     e.preventDefault();
-    login({ username, password });
+    dispatch(login({ username, password }));
   };
 
   return (
