@@ -83,17 +83,17 @@ const ProductCard: React.FC<ChildProps> = ({ item }) => {
       <Circle />
       <Image src={item.img} />
       <Info>
-        <Icon>
+        {/* <Icon>
           <ShoppingCartOutlined />
-        </Icon>
+        </Icon> */}
         <Icon>
           <Link to={`/product/${item._id}`}>
             <SearchOutlined />
           </Link>
         </Icon>
-        <Icon>
+        {/* <Icon>
           <FavoriteBorderOutlined />
-        </Icon>
+        </Icon> */}
       </Info>
     </Container>
   );

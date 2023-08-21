@@ -24,3 +24,27 @@ export const login = (user: any) => {
     }
   };
 };
+
+export const register = (username: string, email: string, password: string) => {
+  return async (dispatch: Dispatch<UserActions>, getState) => {
+    dispatch({
+      type: ActionType.REGISTER_REQUEST,
+    });
+    try {
+      const { data } = await publicRequest.post("/auth/register", {
+        username,
+        email,
+        password,
+      });
+      dispatch({
+        type: ActionType.REGISTER_SUCCESS,
+        payload: data,
+      });
+    } catch (err) {
+      dispatch({
+        type: ActionType.REGISTER_FAIL,
+        payload: `There was an error fethching the user`,
+      });
+    }
+  };
+};

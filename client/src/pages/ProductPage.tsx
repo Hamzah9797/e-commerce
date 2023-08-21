@@ -137,25 +137,11 @@ const ProductPage = () => {
     inStock: boolean | undefined;
   }
 
-  const [product, setProduct] = useState<Product>();
+  const { products } = useTypedSelector((state) => state);
+
+  const product = products.products.find((p) => p._id === id);
 
   const [quantity, setQuantity] = useState(1);
-
-  const [color, setColor] = useState("");
-
-  const [size, setSize] = useState("");
-
-  useEffect(() => {
-    // const getProduct = async () => {
-    //   const res = await publicRequest.get(`/products/find/` + id);
-    //   setProduct(res.data);
-    //   try {
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // };
-    // getProduct();
-  }, [id]);
 
   const handleQuantity = (type: string) => {
     if (type === "dec") {
@@ -164,17 +150,6 @@ const ProductPage = () => {
       setQuantity(quantity + 1);
     }
   };
-
-  const onSizeChange = (e: React.ChangeEvent<HTMLOptionElement>) => {
-    setSize(e.target.value);
-  };
-
-  const handleClick = () => {
-    //update cart
-    // addToCart(product._id, quantity);
-  };
-
-  const cartProducts = useTypedSelector((state) => state.cart);
 
   return (
     <Container>
@@ -192,16 +167,14 @@ const ProductPage = () => {
             <Filter>
               <FilterTitle>Color</FilterTitle>
               {product?.color.map((c) => (
-                <FilterColor color={c} key={c} onClick={() => setColor(c)} />
+                <FilterColor color={c} key={c} />
               ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize>
                 {product?.size.map((s) => (
-                  <FilterSizeOption key={s} onChange={onSizeChange}>
-                    {s}
-                  </FilterSizeOption>
+                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
                 ))}
               </FilterSize>
             </Filter>

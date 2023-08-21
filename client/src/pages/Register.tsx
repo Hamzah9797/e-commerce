@@ -1,6 +1,9 @@
 /* eslint-disable */
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { useDispatch } from "react-redux";
+import { register } from "../redux/action-creators/userActions";
+import { useState } from "react";
 
 const Container = styled.div`
   width: 100vw;
@@ -56,6 +59,16 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+  const dispatch = useDispatch();
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleRegister = () => {
+    dispatch(register(username, email, password));
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -63,15 +76,24 @@ const Register = () => {
         <Form>
           <Input placeholder="name" />
           <Input placeholder="last name" />
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="password" />
+          <Input
+            placeholder="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Input
+            placeholder="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <Input placeholder="confirm password" />
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button>CREATE</Button>
+          <Button onClick={handleRegister}>CREATE</Button>
         </Form>
       </Wrapper>
     </Container>

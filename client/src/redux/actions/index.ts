@@ -48,8 +48,28 @@ interface GetAllCategoriesFail {
   payload: string;
 }
 
+interface RegisterRequest {
+  type: ActionType.REGISTER_REQUEST;
+}
+
+interface RegisterSuccess {
+  type: ActionType.REGISTER_SUCCESS;
+  payload: any;
+}
+
+interface RegisterFail {
+  type: ActionType.REGISTER_FAIL;
+  payload: string;
+}
+
 export type CartActions = AddToCart;
-export type UserActions = LoginRequest | LoginFail | LoginSuccess;
+export type UserActions =
+  | LoginRequest
+  | LoginFail
+  | LoginSuccess
+  | RegisterRequest
+  | RegisterSuccess
+  | RegisterFail;
 export type ProductsActions =
   | GetAllProductsRequest
   | GetAllProductsSuccess

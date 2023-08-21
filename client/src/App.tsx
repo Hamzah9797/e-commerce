@@ -17,6 +17,7 @@ import Register from "./pages/Register";
 import { useEffect } from "react";
 import { getAllCategories } from "./redux/action-creators/categoryActions";
 import { useDispatch } from "react-redux";
+import Protected from "./components/Protected";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -39,7 +40,9 @@ export default function App() {
           <ProductPage />
         </Route>
         <Route exact path="/cart">
-          <Cart />
+          <Protected isLoggedIn={user}>
+            <Cart />
+          </Protected>
         </Route>
         <Route exact path="/login">
           {user ? <Redirect to="/" /> : <Login />}

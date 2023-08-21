@@ -16,3 +16,11 @@ export type Category = {
   title: string;
   category: string;
 };
+
+export type User = {
+  _id: string;
+  username: string;
+  email: string;
+  isAdmin: boolean;
+  password: string;
+};

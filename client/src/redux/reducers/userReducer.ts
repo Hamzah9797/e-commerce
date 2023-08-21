@@ -37,6 +37,24 @@ export const userReducer = (
         isFetching: false,
         error: action.payload,
       };
+    case ActionType.REGISTER_REQUEST:
+      return {
+        currentUser: null,
+        isFetching: true,
+        error: false,
+      };
+    case ActionType.REGISTER_SUCCESS:
+      return {
+        currentUser: action.payload,
+        isFetching: false,
+        error: false,
+      };
+    case ActionType.REGISTER_FAIL:
+      return {
+        currentUser: null,
+        isFetching: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
