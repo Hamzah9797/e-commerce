@@ -92,7 +92,7 @@ const ProductList: React.FC = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products cat={cat} filters={filters} sort={sort} />
+      <Products />
       <NewsLetter />
       <Footer />
     </Container>

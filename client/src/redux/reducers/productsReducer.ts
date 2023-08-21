@@ -1,8 +1,9 @@
 /* eslint-disable */
+import { Product } from "../../types";
 import { ActionType } from "../action-types";
 
 interface ProductState {
-  products: any[];
+  products: Product[];
   isFetching: boolean;
   error: boolean | string;
 }

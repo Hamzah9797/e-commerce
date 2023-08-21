@@ -8,6 +8,7 @@ import {
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Product } from "../types";
 
 //styled components
 
@@ -73,13 +74,10 @@ const Icon = styled.div`
 
 //interface
 interface ChildProps {
-  item: {
-    _id: number;
-    img: string;
-  };
+  item: Product;
 }
 
-const Product: React.FC<ChildProps> = ({ item }) => {
+const ProductCard: React.FC<ChildProps> = ({ item }) => {
   return (
     <Container>
       <Circle />
@@ -101,4 +99,4 @@ const Product: React.FC<ChildProps> = ({ item }) => {
   );
 };
 
-export default Product;
+export default ProductCard;

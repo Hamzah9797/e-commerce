@@ -3,7 +3,6 @@ import { ActionType } from "../action-types";
 import { CartActions } from "../actions";
 import { Dispatch } from "redux";
 import axios from "axios";
-import { userRequest } from "./../../requestMethod";
 
 export const addToCart =
   (id: string, qty, size: string, color: string) =>

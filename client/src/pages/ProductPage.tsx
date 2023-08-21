@@ -7,13 +7,11 @@ import NavBar from "../components/NavBar";
 import NewsLetter from "../components/NewsLetter";
 import { mobile } from "../responsive";
 import { publicRequest } from "../requestMethod";
-import axios from "axios";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { stringify } from "querystring";
+
 import { useTypedActions } from "../hooks/useTypedActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { addToCart } from "../redux/action-creators/cartActions";
 
 const Container = styled.div``;
 
@@ -148,15 +146,15 @@ const ProductPage = () => {
   const [size, setSize] = useState("");
 
   useEffect(() => {
-    const getProduct = async () => {
-      const res = await publicRequest.get(`/products/find/` + id);
-      setProduct(res.data);
-      try {
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getProduct();
+    // const getProduct = async () => {
+    //   const res = await publicRequest.get(`/products/find/` + id);
+    //   setProduct(res.data);
+    //   try {
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // };
+    // getProduct();
   }, [id]);
 
   const handleQuantity = (type: string) => {
@@ -177,10 +175,6 @@ const ProductPage = () => {
   };
 
   const cartProducts = useTypedSelector((state) => state.cart);
-
-  console.log(color, size);
-
-  const addToCart = useTypedActions();
 
   return (
     <Container>
@@ -219,7 +213,7 @@ const ProductPage = () => {
               <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
             <Button
-              onClick={() => addToCart(product._id, quantity, color, size)}
+            // onClick={() => addToCart(product._id, quantity, color, size)}
             >
               ADD TO CART
             </Button>

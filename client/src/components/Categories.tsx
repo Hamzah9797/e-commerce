@@ -1,5 +1,5 @@
 // dependencies
-
+/* eslint-disable */
 import styled from "styled-components";
 import { mobile } from "../responsive";
 
@@ -7,7 +7,7 @@ import { mobile } from "../responsive";
 import CategoryItem from "./CategoryItem";
 
 //data
-import { categories } from "../data";
+import { Category } from "../types";
 
 // styled components
 
@@ -18,11 +18,15 @@ const Container = styled.div`
   ${mobile({ padding: "0px", flexDirection: "column" })}
 `;
 
-const Categories = () => {
+interface CategoriesProps {
+  categories: Category[];
+}
+
+const Categories: React.FC<CategoriesProps> = ({ categories }) => {
   return (
     <Container>
       {categories.map((item) => (
-        <CategoryItem item={item} key={item.id} />
+        <CategoryItem item={item} key={item._id} />
       ))}
     </Container>
   );

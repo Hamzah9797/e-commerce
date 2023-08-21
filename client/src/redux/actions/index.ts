@@ -1,4 +1,4 @@
-import { type } from "os";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ActionType } from "../action-types";
 
 interface AddToCart {
@@ -34,9 +34,27 @@ interface GetAllProductsFail {
   payload: string;
 }
 
+interface GetAllCategoriesRequest {
+  type: ActionType.GET_ALL_CATEGORIES_REQUEST;
+}
+
+interface GetAllCategoriesSuccess {
+  type: ActionType.GET_ALL_CATEGORIES_SUCCESS;
+  payload: any;
+}
+
+interface GetAllCategoriesFail {
+  type: ActionType.GET_ALL_CATEGORIES_FAIL;
+  payload: string;
+}
+
 export type CartActions = AddToCart;
 export type UserActions = LoginRequest | LoginFail | LoginSuccess;
 export type ProductsActions =
   | GetAllProductsRequest
   | GetAllProductsSuccess
   | GetAllProductsFail;
+export type CategoriesActions =
+  | GetAllCategoriesRequest
+  | GetAllCategoriesSuccess
+  | GetAllCategoriesFail;

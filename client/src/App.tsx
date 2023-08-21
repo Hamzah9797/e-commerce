@@ -14,9 +14,17 @@ import ProductPage from "./pages/ProductPage";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import { useEffect } from "react";
+import { getAllCategories } from "./redux/action-creators/categoryActions";
+import { useDispatch } from "react-redux";
 
 export default function App() {
+  const dispatch = useDispatch();
   const user = useTypedSelector((state) => state.user.currentUser);
+
+  useEffect(() => {
+    dispatch(getAllCategories());
+  }, []);
 
   return (
     <Router>

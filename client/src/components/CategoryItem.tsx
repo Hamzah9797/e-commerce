@@ -4,6 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
+import { Category } from "../types";
 
 // styled component
 const Container = styled.div`
@@ -48,18 +49,13 @@ const Button = styled.button`
 
 //child props
 interface ChildProps {
-  item: {
-    id: number;
-    img: string;
-    title: string;
-    cat: string;
-  };
+  item: Category;
 }
 
 const CategoryItem: React.FC<ChildProps> = ({ item }) => {
   return (
     <Container>
-      <Link to={`/products/${item.cat}`}>
+      <Link to={`/products/${item.category}`}>
         <Image src={item.img} />
         <Info>
           <Title>{item.title}</Title>

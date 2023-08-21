@@ -1,6 +1,5 @@
-/* eslint-disable */
 // dependencies
-import React from "react";
+
 import styled from "styled-components";
 import { mobile } from "../responsive";
 
@@ -75,9 +74,7 @@ const MenuItem = styled.div`
 `;
 
 const NavBar = () => {
-  const getCart = useTypedSelector((state) => state.cart);
-
-  const { products, quantity, total } = getCart;
+  const { cart } = useTypedSelector((state) => state);
 
   return (
     <Container>
@@ -95,14 +92,16 @@ const NavBar = () => {
           </Link>
         </Center>
         <Right>
-          <Link to="/login">
+          <Link to="/register">
             <MenuItem>Register</MenuItem>
           </Link>
-          <MenuItem>Sign In</MenuItem>
+          <Link to="/login">
+            <MenuItem>Sign In</MenuItem>
+          </Link>
           <Link to="/cart">
             <MenuItem>
               <Badge
-                badgeContent={quantity}
+                badgeContent={cart.quantity}
                 color="primary"
                 overlap="rectangular"
               >

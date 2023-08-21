@@ -21,9 +21,8 @@ export const cartReducer = (
   switch (action.type) {
     case ActionType.ADD_TO_CART:
       const item = action.payload;
-      console.log(item, "item");
+
       const existItem = state.products.find((x) => x.id === item.id);
-      console.log(existItem, "exist");
       if (existItem) {
         return {
           ...state,
