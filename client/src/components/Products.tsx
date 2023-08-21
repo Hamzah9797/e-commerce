@@ -3,6 +3,7 @@ import styled from "styled-components";
 //data
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import ProductCard from "./ProductCard";
+import LoadingSpinner from "./LoadingSpinner";
 
 //styled components
 
@@ -25,4 +26,4 @@ const Products: React.FC = () => {
   );
 };
 
-export default Products;
+export default LoadingSpinner(Products);

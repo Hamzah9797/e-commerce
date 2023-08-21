@@ -25,7 +25,7 @@ const Home = () => {
       <NavBar />
       <Slider />
       <Categories categories={categories.categories} />
-      <Products />
+      <Products loading={categories.isFetching} />
       <NewsLetter />
       <Footer />
     </div>

@@ -49,6 +49,8 @@ const ProductList: React.FC = () => {
   const [filters, setFilters] = useState<object>({});
   const [sort, setSort] = useState<string>("newest");
 
+  const { products } = useTypedSelector((state) => state);
+
   const handleFilters = (e: any) => {
     const value = e.target.value;
     setFilters({
@@ -92,7 +94,7 @@ const ProductList: React.FC = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products />
+      <Products loading={products.isFetching} />
       <NewsLetter />
       <Footer />
     </Container>
