@@ -6,6 +6,11 @@ interface AddToCart {
   payload: any;
 }
 
+interface RemoveFromCart {
+  type: ActionType.REMOVE_FROM_CART;
+  payload: any;
+}
+
 interface LoginRequest {
   type: ActionType.LOGIN_REQUEST;
 }
@@ -62,7 +67,7 @@ interface RegisterFail {
   payload: string;
 }
 
-export type CartActions = AddToCart;
+export type CartActions = AddToCart | RemoveFromCart;
 export type UserActions =
   | LoginRequest
   | LoginFail

@@ -6,12 +6,12 @@ import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import NewsLetter from "../components/NewsLetter";
 import { mobile } from "../responsive";
-import { publicRequest } from "../requestMethod";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
-
-import { useTypedActions } from "../hooks/useTypedActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import { addToCart } from "../redux/action-creators/cartActions";
+import { useDispatch } from "react-redux";
+import CustomAlert from "../components/CustomAlert";
 
 const Container = styled.div``;
 
@@ -124,24 +124,17 @@ const Button = styled.button`
 const ProductPage = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-
-  interface Product {
-    _id: string | undefined;
-    title: string | undefined;
-    description: string | undefined;
-    img: string | undefined;
-    categories: string[] | undefined;
-    color: string[] | undefined;
-    size: string[] | undefined;
-    price: number | undefined;
-    inStock: boolean | undefined;
-  }
+  const dispatch = useDispatch();
 
   const { products } = useTypedSelector((state) => state);
 
   const product = products.products.find((p) => p._id === id);
 
   const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState(null);
+  const [size, setSize] = useState("m");
+
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleQuantity = (type: string) => {
     if (type === "dec") {
@@ -151,48 +144,72 @@ const ProductPage = () => {
     }
   };
 
+  const handleAddToCart = () => {
+    if (color) {
+      return dispatch(addToCart(product._id, quantity, color, size));
+    }
+    return setShowAlert(true);
+  };
+
   return (
     <Container>
       <NavBar />
       <Announcement />
-      <Wrapper>
-        <ImgContainer>
-          <Image src={product?.img} />
-        </ImgContainer>
-        <InfoContainer>
-          <Title>{product?.title}</Title>
-          <Desc>{product?.description}</Desc>
-          <Price>$ {product?.price}</Price>
-          <FilterContainer>
-            <Filter>
-              <FilterTitle>Color</FilterTitle>
-              {product?.color.map((c) => (
-                <FilterColor color={c} key={c} />
-              ))}
-            </Filter>
-            <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                {product?.size.map((s) => (
-                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
+      {!showAlert && (
+        <Wrapper>
+          <ImgContainer>
+            <Image src={product?.img} />
+          </ImgContainer>
+          <InfoContainer>
+            <Title>{product?.title}</Title>
+            <Desc>{product?.description}</Desc>
+            <Price>$ {product?.price}</Price>
+            <FilterContainer>
+              <Filter>
+                <FilterTitle>Color</FilterTitle>
+                {product?.color.map((c) => (
+                  <div
+                    style={{
+                      border: c === color ? "4px solid teal" : "",
+                    }}
+                  >
+                    <FilterColor
+                      color={c}
+                      key={c}
+                      onClick={() => setColor(c)}
+                    />
+                  </div>
                 ))}
-              </FilterSize>
-            </Filter>
-          </FilterContainer>
-          <AddContainer>
-            <AmountContainer>
-              <Remove onClick={() => handleQuantity("dec")} />
-              <Amount>{quantity}</Amount>
-              <Add onClick={() => handleQuantity("inc")} />
-            </AmountContainer>
-            <Button
-            // onClick={() => addToCart(product._id, quantity, color, size)}
-            >
-              ADD TO CART
-            </Button>
-          </AddContainer>
-        </InfoContainer>
-      </Wrapper>
+              </Filter>
+              <Filter>
+                <FilterTitle>Size</FilterTitle>
+                <FilterSize>
+                  {product?.size.map((s) => (
+                    <FilterSizeOption key={s} onClick={() => setSize(s)}>
+                      {s}
+                    </FilterSizeOption>
+                  ))}
+                </FilterSize>
+              </Filter>
+            </FilterContainer>
+            <AddContainer>
+              <AmountContainer>
+                <Remove onClick={() => handleQuantity("dec")} />
+                <Amount>{quantity}</Amount>
+                <Add onClick={() => handleQuantity("inc")} />
+              </AmountContainer>
+              <Button onClick={handleAddToCart}>ADD TO CART</Button>
+            </AddContainer>
+          </InfoContainer>
+        </Wrapper>
+      )}
+      {showAlert && (
+        <CustomAlert
+          message="select a color"
+          type="info"
+          onClose={() => setShowAlert(false)}
+        />
+      )}
       <NewsLetter />
       <Footer />
     </Container>

@@ -9,6 +9,8 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethod";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../redux/action-creators/cartActions";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -170,27 +172,25 @@ const Button = styled.button`
 
 const Cart = () => {
   const cartItems = useTypedSelector((state) => state.cart);
-
+  const dispatch = useDispatch();
   const [stripeToken, setStripeToken] = useState(null);
 
   const onToken = (token) => {
     setStripeToken(token);
   };
 
-  /*
-  useEffect(() => {
-    const makeRequest = async () => {
-      try {
-        const res = await userRequest("/checkout/payment", {
-          //tokenId: stripeToken,
-          amount: cartItems.total * 100,
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    };
-  }, [stripeToken]);
-*/
+  // useEffect(() => {
+  //   const makeRequest = async () => {
+  //     try {
+  //       const res = await userRequest("/checkout/payment", {
+  //         tokenId: stripeToken,
+  //         amount: cartItems.total * 100,
+  //       });
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  // }, [stripeToken]);
 
   return (
     <Container>
@@ -229,7 +229,9 @@ const Cart = () => {
                   <ProductAmountContainer>
                     <Add />
                     <ProductAmount>{product.qty}</ProductAmount>
-                    <Remove />
+                    <Remove
+                      onClick={() => dispatch(removeFromCart(product.id))}
+                    />
                   </ProductAmountContainer>
                   <ProductPrice>$ {product.price}</ProductPrice>
                 </PriceDetail>

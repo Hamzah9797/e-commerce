@@ -29,7 +29,7 @@ export const cartReducer = (
           products: state.products.map((x) =>
             x.id === existItem.id ? item : x
           ),
-          quantity: state.quantity + 1,
+          quantity: state.quantity,
           total: state.total + action.payload.price,
         };
       } else {
@@ -40,6 +40,30 @@ export const cartReducer = (
           total: state.total + action.payload.price,
         };
       }
+    case ActionType.REMOVE_FROM_CART:
+      const itemToRemove = state.products.find(
+        (x) => x.id === action.payload.id
+      );
+      const newProducts = state.products.filter(
+        (x) => x.id !== action.payload.id
+      );
+
+      if (itemToRemove) {
+        return {
+          ...state,
+          products: newProducts,
+          quantity: state.quantity - 1,
+          total: state.total - action.payload.price,
+        };
+      } else {
+        return {
+          ...state,
+          products: newProducts,
+          quantity: state.quantity,
+          total: state.total,
+        };
+      }
+
     default:
       return state;
   }
